@@ -195,7 +195,6 @@ class BuycraftApiImpl implements BuycraftApi {
                 .setParameter("playersOnline", onlinePlayers);
         HttpGet get;
         try {
-            System.out.println(builder.build());
             get = new HttpGet(builder.build());
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
@@ -205,9 +204,7 @@ class BuycraftApiImpl implements BuycraftApi {
         try (InputStream stream = entity.getContent()) {
             // can't be bothered to parse HTTP encoding, UTF-8 should do the job
             Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8);
-            JsonObject jsonResponse = new JsonParser().parse(reader).getAsJsonObject();
-            System.out.println(jsonResponse);
-            return jsonResponse;
+            return new JsonParser().parse(reader).getAsJsonObject();
         }
     }
 }
