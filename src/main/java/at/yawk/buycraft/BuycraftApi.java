@@ -3,6 +3,7 @@ package at.yawk.buycraft;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonPrimitive;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -88,7 +89,7 @@ public interface BuycraftApi {
     /**
      * @see #commands(String, String, String)
      */
-    default List<Command> commands(List<String> players, boolean offlineCommands, int offlineCommandLimit)
+    default List<Command> commands(Collection<String> players, boolean offlineCommands, int offlineCommandLimit)
             throws IOException {
         JsonArray array = new JsonArray();
         players.forEach(p -> array.add(new JsonPrimitive(p)));
@@ -105,7 +106,7 @@ public interface BuycraftApi {
     /**
      * @see #removeCommands(String)
      */
-    default void removeCommands(List<Integer> commandIds) throws IOException {
+    default void removeCommands(Collection<Integer> commandIds) throws IOException {
         JsonArray array = new JsonArray();
         commandIds.forEach(i -> array.add(new JsonPrimitive(i)));
         removeCommands(array.toString());
