@@ -74,11 +74,17 @@ public interface BuycraftApi {
 
     /**
      * Get the currently pending users.
+     *
+     * @see at.yawk.buycraft.PendingResponse
      */
     PendingResponse pending() throws IOException;
 
     /**
      * Get the currently pending commands of the given players.
+     *
+     * Sending this with an empty player array will return all pending offline commands. Sending this with an array of
+     * players will send online commands for those players. Impact of the second and third parameter is unknown, but
+     * probably defines whether offline-runnable commands should be sent when a player array is given.
      *
      * @param players             The players we want to request commands for. (json array)
      * @param offlineCommands     Whether we want offline commands to be sent as well. (true/false)

@@ -14,10 +14,17 @@ public class PendingResponse {
         this.offlineCommands = offlineCommands;
     }
 
+    /**
+     * A collection of users that currently have an online task (for example a command that can only be executed with
+     * them online) pending.
+     */
     public Collection<String> getPendingUsernames() {
         return pendingUsernames;
     }
 
+    /**
+     * Unknown. Maybe true if there are offline commands pending?
+     */
     public boolean isOfflineCommands() {
         return offlineCommands;
     }
